@@ -58,7 +58,7 @@ export default function RegisterPage() {
 				className='mx-auto mt-10'
 				src={'/register-logo.png'}
 				alt='logo'
-				width={250}
+				width={280}
 				height={150}
 			/>
 			<h1 className='font-bold text-2xl mt-10'>Join the CookMate !</h1>
