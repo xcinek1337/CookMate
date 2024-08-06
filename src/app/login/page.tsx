@@ -1,10 +1,12 @@
 'use client';
 
 import { FormEvent, useState } from 'react';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import z, { ZodError } from 'zod';
-
 import { useRouter } from 'next/navigation'; // useRouter on client side, redirect on server side !
+
+import Image from 'next/image';
+import Form from '@/components/Form';
 
 const User = z.object({
 	name: z.string().trim().min(1, 'Name is required'),
@@ -61,37 +63,21 @@ export default function LoginPage() {
 	};
 
 	return (
-		<>
-			<h1>login in</h1>
-			<form
+		<main className='text-center'>
+			<Image
+				className='mx-auto mt-10'
+				src={'/famale-logo2.png'}
+				alt='logo'
+				width={250}
+				height={150}
+			/>
+			<h1 className='font-bold text-2xl mt-10'>Welcome to CookMate!</h1>
+			<p className='font-semibold text-gray-500 mt-2'>keep your data safe</p>
+			<Form
 				onSubmit={handleSubmit}
-				className='max-w-[500px] flex flex-col px-4 py-8 gap-2 mx-auto mt-8 rounded-xl bg-white md:text-lg'
-			>
-				<label htmlFor='name'>Name:</label>
-				<input
-					className='border-2 border-black'
-					type='text'
-					id='name'
-					name='name'
-				/>
-				<label htmlFor='password'>Password:</label>
-				<input
-					className='border-2 border-black'
-					type='text'
-					id='password'
-					name='password'
-				/>
-				<button
-					type='submit'
-					className={`py-2 bg-yellow-500 px-5 rounded text-gray-50 font-bold tracking-widest transition ${
-						isSubmitting ? 'cursor-not-allowed' : 'hover:bg-yellow-600'
-					}`}
-					disabled={isSubmitting}
-				>
-					{isSubmitting ? 'Logging...' : 'Login'}
-				</button>
-				<Toaster />
-			</form>
-		</>
+				isSubmitting={isSubmitting}
+				label={'LOGIN'}
+			/>
+		</main>
 	);
 }
