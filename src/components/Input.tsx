@@ -1,12 +1,8 @@
 'use client';
 
+import { type MealProps } from '@/types';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-
-type MealProps = {
-	idMeal: string;
-	strMeal: string;
-};
 
 export default function Input() {
 	const [value, setValue] = useState<string>('');
