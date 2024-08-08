@@ -1,13 +1,12 @@
 import { cookies } from 'next/headers';
-import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
+import { NextResponse } from 'next/server';
 
 export function POST(req: Request) {
-	try {
+	if (req.method === 'POST') {
 		cookies().delete('token');
-		redirect('/');
-	} catch (error) {
-		console.log(error);
+		const response = NextResponse.json({ message: 'logged out' }, { status: 200 });
+		return response;
+	} else {
+		return new Response('Internal Server Error', { status: 500 });
 	}
-	// revalidatePath('/');/
 }

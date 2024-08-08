@@ -26,8 +26,8 @@ export default function Navigation({ isAuth }: { isAuth: RequestCookie | undefin
 			{isAuth ? (
 				<ul
 					className={`${
-						isOpen ? 'menu-open' : 'hidden md:flex'
-					} md:flex gap-2 py-4 md:items-center bg-gray-800 md:bg-transparent font-serif`}
+						isOpen ? 'menu-open' : 'hidden'
+					} md:flex gap-2 py-4 md:items-center text-base lg:text-xl bg-gray-800 md:bg-transparent font-serif`}
 				>
 					<Link
 						className={`${pathname === '/meals' ? 'text-orange-300' : ''} mx-2 hover:text-yellow-300 transition`}
@@ -62,8 +62,8 @@ export default function Navigation({ isAuth }: { isAuth: RequestCookie | undefin
 			) : (
 				<ul
 					className={`${
-						isOpen ? 'menu-open' : 'hidden md:flex'
-					} md:flex gap-2 py-4 md:items-center bg-gray-800 md:bg-transparent font-serif`}
+						isOpen ? 'menu-open' : 'hidden'
+					} md:flex gap-2 py-4 md:items-center text-base lg:text-xl bg-gray-800 md:bg-transparent font-serif`}
 				>
 					<Link
 						className={`${pathname === '/meals' ? 'text-orange-300' : ''} mx-2 hover:text-yellow-300 transition`}

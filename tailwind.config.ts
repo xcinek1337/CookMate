@@ -12,7 +12,8 @@ const config: Config = {
 				hero: "url('/hero.jpg')",
 			},
 			fontFamily: {
-				Dancing: ["Dancing Script", 'cursive'],
+				Dancing: ['Dancing Script', 'cursive'],
+				Roboto: ['Roboto Slab', 'serif'],
 			},
 		},
 	},

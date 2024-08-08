@@ -3,7 +3,7 @@
 import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 import z, { ZodError } from 'zod';
-import { useRouter } from 'next/navigation'; // useRouter on client side, redirect on server side !
+import { useRouter } from 'next/navigation'; 
 
 import Image from 'next/image';
 import Form from '@/components/Form';
@@ -45,7 +45,7 @@ export default function LoginPage() {
 
 				// little delay to read and see toast :D
 				await new Promise((resolve) => setTimeout(resolve, 800));
-				router.push('/');
+				window.location.href = '/';
 			} else {
 				const message = await response.text();
 				toast.error(message || 'Login failed');

@@ -8,6 +8,7 @@ export default function Logo() {
 			href={'/'}
 		>
 			<Image
+				className='w-full'
 				src={'/main-logo2.png'}
 				alt='logo'
 				height={50}
