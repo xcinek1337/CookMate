@@ -16,7 +16,7 @@ export default async function Home() {
 					<h1 className='mb-10 text-2xl font-Roboto font-bold text-white max-[350px]:text-xl'>
 						What we are cooking up today?
 					</h1>
-					<Link href={'/meals'}>
+					<Link href={'/meals/A'}>
 						<button className='text-2xl font-semibold py-2 px-4 bg-yellow-300/60 rounded-xl'>Check recipes</button>
 					</Link>
 				</div>
