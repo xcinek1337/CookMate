@@ -3,10 +3,15 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+type MealProps = {
+	idMeal: string;
+	strMeal: string;
+};
+
 export default function Input() {
-	const [value, setValue] = useState('');
-	const [meals, setMeals] = useState([]);
-	const [isLoading, setIsLoading] = useState(false);
+	const [value, setValue] = useState<string>('');
+	const [meals, setMeals] = useState<MealProps[]>([]);
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setValue(event.currentTarget.value);
