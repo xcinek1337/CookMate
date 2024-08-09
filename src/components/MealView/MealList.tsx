@@ -33,8 +33,8 @@ export default function MealList({ meals }: { meals: [] }) {
 									<article>
 										<div className='aspect-square overflow-hidden rounded-md border bg-slate-50 hover:bg-emerald-50'>
 											<Image
-												width={300}
-												height={300}
+												width={200}
+												height={200}
 												src={meal.strMealThumb}
 												alt={meal.strMeal}
 												className=' h-full w-full cursor-pointer object-cover object-center p-4 transition-transform hover:scale-105'
