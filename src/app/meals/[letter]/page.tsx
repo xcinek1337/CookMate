@@ -37,7 +37,7 @@ export default async function MealsPage({ params }: { params: { letter: string }
 	return (
 		<section>
 			<h3 className='my-4 text-center font-semibold text-gray-700 px-4'>Browse by name</h3>
-			<div className='bg-gray-600 rounded-sm flex items-center overflow-x-scroll max-w-7xl mx-auto min-[960px]:overflow-hidden min-[960px]:justify-center'>
+			<div className='bg-gray-600 rounded-md flex items-center overflow-x-scroll max-w-7xl mx-auto min-[960px]:overflow-hidden min-[960px]:justify-center'>
 				{letters.map((letter) => {
 					return (
 						<Link
