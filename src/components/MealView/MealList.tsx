@@ -8,17 +8,16 @@ import { useState } from 'react';
 export default function MealList({ meals }: { meals: [] }) {
 	const [currentPage, setCurrentPage] = useState<number>(1);
 
-	if (!meals) {
-		return <p className='mt-10 text-xl text-center'>no meals found</p>;
-	}
-
 	const totalPages = Math.ceil(meals.length / 8);
-	const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
 
 	const itemsPerPage = 8;
 	const indexOfLastItem = currentPage * itemsPerPage;
 	const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 	const paginatedList = meals.slice(indexOfFirstItem, indexOfLastItem);
+
+	if (!meals) {
+		return <p className='mt-10 text-xl text-center'>no meals found</p>;
+	}
 
 	return (
 		<>
@@ -59,7 +58,6 @@ export default function MealList({ meals }: { meals: [] }) {
 			</ul>
 			<MealListPagination
 				totalPages={totalPages}
-				pageNumbers={pageNumbers}
 				currentPage={currentPage}
 				setCurrentPage={setCurrentPage}
 			/>
