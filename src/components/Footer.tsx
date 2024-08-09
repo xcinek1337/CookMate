@@ -18,7 +18,7 @@ export default function Footer() {
 					<li className='hover:text-white transition cursor-pointer '>Healthcare meals</li>
 					<li className='hover:text-white transition cursor-pointer '>Insurance</li>
 					<li className='hover:text-white transition cursor-pointer '>HR sector</li>
-					<li className='hover:text-white transition cursor-pointer '>For strong activity persons</li>
+					<li className='hover:text-white transition cursor-pointer '>for high activity levels</li>
 				</ul>
 				<ul className='flex flex-col gap-4'>
 					<li className='pb-1 border-b-2 border-gray-600 md:px-10 w-36 text-sm text-center cursor-pointer hover:text-white transition'>
