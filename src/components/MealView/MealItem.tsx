@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Flag from 'react-world-flags';
 import { Heart, Youtube } from 'lucide-react';
 import { type MealProps } from '@/types';
+import { regions } from '@/const';
+
 
 export default function MealItem({ meals }: { meals: MealProps[] }) {
 	const formattedText = meals[0].strInstructions.split('\r\n').map((line: string, index: number) => (
@@ -12,16 +15,10 @@ export default function MealItem({ meals }: { meals: MealProps[] }) {
 			{line}
 		</p>
 	));
-
 	return (
 		<article className='flex w-full flex-col gap-12 py-4 md:flex-row md:gap-24'>
 			<div className='flex flex-1 flex-col justify-between pb-8 sm:pb-0'>
-				<div className='flex flex-col'>
-					<p className='font-semibold'>{meals[0]?.strArea}</p>
-					<div className='flex items-center gap-4 md:gap-24'>
-						<h1 className='mt-2 text-4xl font-bold'>{meals[0]?.strMeal}</h1>
-					</div>
-
+				<div className='flex  flex-col'>
 					<div className='md:hidden float-left mx-auto md:float-right md:ml-4 mb-4'>
 						<Image
 							className='object-cover mix-blend-multiply md:w-[400px] md:h-[200px] rounded-xl xl'
@@ -30,6 +27,16 @@ export default function MealItem({ meals }: { meals: MealProps[] }) {
 							width={400}
 							height={200}
 						/>
+					</div>
+					<div className='flex items-center gap-4 md:gap-24'>
+						<h1 className='mt-2 text-4xl font-bold'>{meals[0]?.strMeal}</h1>
+					</div>
+
+					<div className='w-fit flex gap-2 border-2 my-1 items-center py-1 px-3 bg-gray-200 border-gray-400 rounded-lg'>
+						<div className='w-7'>
+							<Flag code={regions[meals[0]?.strArea]} />
+						</div>
+						<span>Cuisine</span>
 					</div>
 
 					<div className='text-md mt-4'>
