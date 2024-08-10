@@ -6,7 +6,7 @@ export default async function MealInfoPage({ params }: { params: { id: string } 
 	const { meals } = await response.json();
 
 	return (
-		<section className='max-w-md mx-auto  px-4 sm:max-w-2xl sm:py-2 md:max-w-4xl lg:max-w-7xl '>
+		<section className='max-w-md mx-auto px-4 sm:max-w-2xl sm:py-2 md:max-w-4xl lg:max-w-7xl '>
 			<MealItemBackButton />
 			<MealItem meals={meals} />
 		</section>

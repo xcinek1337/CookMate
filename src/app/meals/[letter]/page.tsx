@@ -1,34 +1,6 @@
 import MealList from '@/components/MealView/MealList';
 import Link from 'next/link';
-
-const letters = [
-	'A',
-	'B',
-	'C',
-	'D',
-	'E',
-	'F',
-	'G',
-	'H',
-	'I',
-	'J',
-	'K',
-	'L',
-	'M',
-	'N',
-	'O',
-	'P',
-	'Q',
-	'R',
-	'S',
-	'T',
-	'U',
-	'V',
-	'W',
-	'X',
-	'Y',
-	'Z',
-];
+import { letters } from '@/const';
 
 export default async function MealsPage({ params }: { params: { letter: string } }) {
 	const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${params.letter}`);
