@@ -3,6 +3,13 @@ import { RequestCookie } from 'next/dist/compiled/@edge-runtime/cookies';
 import Link from 'next/link';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
+import Input from '@/components/Input';
+
+const navRoutes = [
+	{ href: '/meals/B', name: 'All meals' },
+	{ href: '/regional/Polish', name: 'Regional meals' },
+	{ href: '/random', name: 'Random meal' },
+];
 
 export default function Navigation({ isAuth }: { isAuth: RequestCookie | undefined }) {
 	const [isOpen, setIsOpen] = useState(false);
@@ -29,29 +36,33 @@ export default function Navigation({ isAuth }: { isAuth: RequestCookie | undefin
 						isOpen ? 'menu-open' : 'hidden'
 					} md:flex gap-2 py-4 md:items-center text-base lg:text-xl bg-gray-800 md:bg-transparent font-serif`}
 				>
-					<Link
-						className={`${pathname === '/meals' ? 'text-orange-300' : ''} mx-2 hover:text-yellow-300 transition`}
-						href={'/meals/B'}
-						onClick={handleLinkClick}
-					>
-						All meals
-					</Link>
+					<div className=' md:hidden'>
+						<Input handleLinkClick={handleLinkClick} />
+					</div>
+					{navRoutes.map((link) => {
+						return (
+							<Link
+								key={link.name}
+								onClick={handleLinkClick}
+								className={`${
+									pathname.startsWith(link.href) ? 'text-orange-300' : ''
+								} mx-2 hover:text-yellow-300 transition`}
+								href={link.href}
+							>
+								{link.name}
+							</Link>
+						);
+					})}
 					<Link
 						className={`${
-							pathname.startsWith('/regional') ? 'text-orange-300' : ''
+							pathname.startsWith('/favourites') ? 'text-orange-300' : ''
 						} mx-2 hover:text-yellow-300 transition`}
-						href={'/regional/Polish'}
+						href={'/favourites'}
 						onClick={handleLinkClick}
 					>
-						Regional meals
+						Favourites
 					</Link>
-					<Link
-						className={`${pathname === '/random' ? 'text-orange-300' : ''} mx-2 hover:text-yellow-300 transition`}
-						href={'/random'}
-						onClick={handleLinkClick}
-					>
-						Random meal
-					</Link>
+
 					<button
 						className='mx-2 text-gray-800 font-bold  py-3 md:py-1.5 px-4 text-center  bg-yellow-300 rounded-full hover:bg-yellow-500 hover:text-gray-600 transition'
 						onClick={handleLogout}
@@ -65,31 +76,25 @@ export default function Navigation({ isAuth }: { isAuth: RequestCookie | undefin
 						isOpen ? 'menu-open' : 'hidden'
 					} md:flex gap-2 py-4 md:items-center text-base lg:text-xl bg-gray-800 md:bg-transparent font-serif`}
 				>
+					<div className='md:hidden'>
+						<Input handleLinkClick={handleLinkClick} />
+					</div>
+					{navRoutes.map((link) => {
+						return (
+							<Link
+								key={link.name}
+								onClick={handleLinkClick}
+								className={`${
+									pathname.startsWith(link.href) ? 'text-orange-300' : ''
+								} mx-2 hover:text-yellow-300 transition`}
+								href={link.href}
+							>
+								{link.name}
+							</Link>
+						);
+					})}
 					<Link
-						className={`${pathname === '/meals' ? 'text-orange-300' : ''} mx-2 hover:text-yellow-300 transition`}
-						href={'/meals/C'}
-						onClick={handleLinkClick}
-					>
-						All meals
-					</Link>
-					<Link
-						className={`${
-							pathname.startsWith('/regional') ? 'text-orange-300' : ''
-						} mx-2 hover:text-yellow-300 transition`}
-						href={'/regional/Polish'}
-						onClick={handleLinkClick}
-					>
-						Regional meals
-					</Link>
-					<Link
-						className={`${pathname === '/random' ? 'text-orange-300' : ''} mx-2 hover:text-yellow-300 transition`}
-						href={'/random'}
-						onClick={handleLinkClick}
-					>
-						Random meal
-					</Link>
-					<Link
-						className='mx-2 text-gray-800 font-bold  py-3 md:py-1.5 px-4 text-center  bg-yellow-300 rounded-full hover:bg-yellow-500 hover:text-gray-600 transition'
+						className='mx-2 font-bold  py-3 md:py-1.5 px-4 text-center border-2 border-yellow-300 text-yellow-300 rounded-full hover:bg-yellow-500 hover:text-gray-600 transition'
 						href={'/login'}
 						onClick={handleLinkClick}
 					>

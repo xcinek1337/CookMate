@@ -4,7 +4,11 @@ import { type MealProps } from '@/types';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-export default function Input() {
+type InputProps = {
+	handleLinkClick?: React.MouseEventHandler<HTMLAnchorElement>;
+};
+
+export default function Input({ handleLinkClick }: InputProps) {
 	const [value, setValue] = useState<string>('');
 	const [meals, setMeals] = useState<MealProps[]>([]);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -13,6 +17,11 @@ export default function Input() {
 		setValue(event.currentTarget.value);
 	};
 
+	const handleSuggestionClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+		setMeals([]);
+		setValue('');
+		if (handleLinkClick) handleLinkClick(e);
+	};
 	useEffect(() => {
 		if (!value) {
 			setMeals([]);
@@ -78,15 +87,16 @@ export default function Input() {
 			<input
 				value={value}
 				onChange={handleChange}
-				className={`px-4  border-2  py-3 w-72 lg:w-[450px] border-gray-500 focus:outline-gray-500 transition`}
+				className={`px-4  border-2 text-gray-900  py-3 w-72 lg:w-[450px] border-gray-500 focus:outline-gray-500 transition`}
 				placeholder='Type first letter or full dish'
 			/>
 			{isLoading && <p className='absolute top-full left-0 mt-1 text-sm text-gray-500'>Loading...</p>}
 			{!isLoading && meals.length > 0 && (
-				<ul className='absolute top-full left-0 w-72 lg:w-[450px] bg-white border border-gray-200 shadow-md'>
+				<ul className='absolute top-full text-gray-700  left-0 w-72 lg:w-[450px] bg-white border border-gray-200 shadow-md'>
 					{meals.map((meal, i) => (
 						<li key={i}>
 							<Link
+								onClick={(e) => handleSuggestionClick(e)}
 								className='block border-b-2 px-3 py-1.5 hover:bg-gray-200 hover:font-semibold transition'
 								href={`/meal/${meal.idMeal}`}
 							>
