@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { NextResponse } from 'next/server';
-import { cookies } from 'next/headers';
+
 
 const prisma = new PrismaClient();
 
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 		const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: '1h' });
 
 		const response = NextResponse.json({ message: 'Login succesful' }, { status: 200 });
-		cookies().set({
+		response.cookies.set({
 			name: 'token',
 			value: token,
 			secure: process.env.NODE_ENV! === 'production',

@@ -1,9 +1,8 @@
-import React from 'react';
-import { Toaster } from 'react-hot-toast';
+import React, { FormEventHandler } from 'react';
 import Link from 'next/link';
 
 type FormProps = {
-	onSubmit: FormEvent<HTMLFormElement>;
+	onSubmit: FormEventHandler<HTMLFormElement>;
 	isSubmitting: boolean;
 	label: string;
 };
@@ -12,11 +11,11 @@ export default function Form({ onSubmit, label, isSubmitting }: FormProps) {
 	return (
 		<form
 			onSubmit={onSubmit}
-			className='max-w-[500px] flex flex-col px-8 sm:px-0 py-8 gap-6 mx-auto mt-2 rounded-xl bg-white md:text-lg'
+			className='max-w-[500px] flex flex-col px-8 sm:px-0 py-8 gap-6 mx-auto mt-2 rounded-xl md:text-lg'
 		>
 			<div className='relative w-full'>
 				<input
-					className='w-full pl-6 shadow-md rounded-full pt-7 pb-4 text-sm bg-gray-100 leading-tight'
+					className='w-full pl-6 shadow-lg rounded-full pt-7 pb-4 text-sm bg-gray-100 leading-tight focus:outline-yellow-700'
 					type='text'
 					id='name'
 					name='name'
@@ -30,7 +29,7 @@ export default function Form({ onSubmit, label, isSubmitting }: FormProps) {
 			</div>
 			<div className='relative w-full'>
 				<input
-					className='w-full pl-6 shadow-md rounded-full pt-7 pb-4 text-sm bg-gray-100 leading-tight'
+					className='w-full pl-6 shadow-lg rounded-full pt-7 pb-4 text-sm bg-gray-100 leading-tight focus:outline-yellow-700'
 					type='password'
 					id='password'
 					name='password'
@@ -51,30 +50,27 @@ export default function Form({ onSubmit, label, isSubmitting }: FormProps) {
 			>
 				{isSubmitting ? `${label}ING...` : `${label}`}
 			</button>
-			{label === 'REGISTER' ?
-                (
-                    <p>
-                        Have a account?
-                        <Link
-                            className='underline underline-offset-2 ml-0.5'
-                            href={'/login'}
-                        >
-                            Login here
-                        </Link>
-                    </p>
-                    ) : (
-                    <p>
-                        Dont have account?
-                        <Link
-                            className='underline underline-offset-2 ml-0.5'
-                            href={'/register'}
-                        >
-                            Start here
-                        </Link>
-                    </p>
-                    )
-            }
-			<Toaster />
+			{label === 'REGISTER' ? (
+				<p>
+					Have a account?
+					<Link
+						className='underline underline-offset-2 ml-0.5'
+						href={'/login'}
+					>
+						Login here
+					</Link>
+				</p>
+			) : (
+				<p>
+					Dont have account?
+					<Link
+						className='underline underline-offset-2 ml-0.5'
+						href={'/register'}
+					>
+						Start here
+					</Link>
+				</p>
+			)}
 		</form>
 	);
 }

@@ -3,7 +3,7 @@
 import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 import z, { ZodError } from 'zod';
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
 
 import Image from 'next/image';
 import Form from '@/components/Form';
@@ -73,6 +73,14 @@ export default function LoginPage() {
 			/>
 			<h1 className='font-bold text-2xl mt-10'>Welcome to CookMate!</h1>
 			<p className='font-semibold text-gray-500 mt-2'>keep your data safe</p>
+
+			<div className='group relative m-12 flex justify-center'>
+				<button className='rounded bg-amber-500 px-4 py-2 text-sm text-white shadow-sm'>test user!</button>
+				<span className='absolute top-10 scale-0 rounded bg-gray-800 p-2 text-xs text-white group-hover:scale-100'>
+					name: test | password: test
+				</span>
+			</div>
+		
 			<Form
 				onSubmit={handleSubmit}
 				isSubmitting={isSubmitting}
