@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import { PrismaClient } from '@prisma/client';
 import jwt from 'jsonwebtoken';
 import MealList from '@/components/MealView/MealList';
+import { MealProps } from '@/types';
 
 export default async function FavouritesPage() {
 	const prisma = new PrismaClient();
@@ -24,7 +25,7 @@ export default async function FavouritesPage() {
 			id_user: userId,
 		},
 	});
-	const meals = data.map((item) => item.meal);
+	const meals = data.map((item) => item.meal) as MealProps[];
 	return (
 		<section>
 			<h3 className='my-4 text-center font-semibold text-gray-700 px-4'>Your favourites meals</h3>

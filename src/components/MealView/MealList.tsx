@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function MealList({ meals }: { meals: any }) {
+export default function MealList({ meals }: { meals: MealProps[] }) {
 	const [currentPage, setCurrentPage] = useState<number>(1);
 
 	const totalPages = Math.ceil(meals.length / 8);
