@@ -3,8 +3,6 @@
 import { FormEvent, useState } from 'react';
 import toast from 'react-hot-toast';
 import z, { ZodError } from 'zod';
-import { useRouter } from 'next/navigation';
-
 import Image from 'next/image';
 import Form from '@/components/Form';
 
@@ -14,8 +12,6 @@ const User = z.object({
 });
 
 export default function LoginPage() {
-	const router = useRouter();
-
 	const [isSubmitting, setIsSubmitting] = useState(false);
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -80,7 +76,7 @@ export default function LoginPage() {
 					name: test | password: test
 				</span>
 			</div>
-		
+
 			<Form
 				onSubmit={handleSubmit}
 				isSubmitting={isSubmitting}

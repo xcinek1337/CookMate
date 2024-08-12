@@ -2,6 +2,14 @@ import Flag from 'react-world-flags';
 import Link from 'next/link';
 import { regionsArray } from '@/const';
 import MealList from '@/components/MealView/MealList';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: { region: string } }): Promise<Metadata> {
+	return {
+		title: `Explore ${params.region} Cuisine | CookMate`,
+		description: `Discover a selection of meals and recipes from ${params.region}. Dive into regional specialties and enjoy flavors unique to this area. Explore and find your new favorite dishes from ${params.region}.`,
+	};
+}
 
 export default async function MealsPage({ params }: { params: { region: string } }) {
 	const response = await fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${params.region}`);

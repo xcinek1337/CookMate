@@ -1,6 +1,14 @@
 import MealList from '@/components/MealView/MealList';
 import Link from 'next/link';
 import { letters } from '@/const';
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: { letter: string } }): Promise<Metadata> {
+	return {
+		title: `Dishes Starting with ${params.letter} | CookMate`,
+		description: `Explore a variety of meals that start with the letter ${params.letter}. Discover new recipes and enjoy delicious dishes tailored to your preferences.`,
+	};
+}
 
 export default async function MealsPage({ params }: { params: { letter: string } }) {
 	const response = await fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${params.letter}`);

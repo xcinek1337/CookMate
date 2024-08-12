@@ -4,6 +4,11 @@ import jwt from 'jsonwebtoken';
 import MealList from '@/components/MealView/MealList';
 import { MealProps } from '@/types';
 
+export const metadata = {
+	title: 'CookMate | Favourites',
+	description: 'Browse and manage your favourite meals saved in CookMate. Discover new recipes or revisit your top dishes, all in one place.',
+};
+
 export default async function FavouritesPage() {
 	const prisma = new PrismaClient();
 	const token = cookies().get('token')?.value;

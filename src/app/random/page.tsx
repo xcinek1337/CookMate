@@ -1,5 +1,14 @@
 import MealItem from '@/components/MealView/MealItem';
+import { Metadata } from 'next';
 import React from 'react';
+
+export async function generateMetadata(): Promise<Metadata> {
+	return {
+		title: 'CookMate | Random idea',
+		description:
+			'Get inspired with a random meal idea from CookMate! Explore unique recipes and discover new culinary adventures tailored to your taste.',
+	};
+}
 
 export default async function RandomMealPage() {
 	const response = await fetch(`https://www.themealdb.com/api/json/v1/1/random.php`, {
