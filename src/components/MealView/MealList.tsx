@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-export default function MealList({ meals }: { meals: [] }) {
+export default function MealList({ meals }: { meals: any }) {
 	const [currentPage, setCurrentPage] = useState<number>(1);
 
 	const totalPages = Math.ceil(meals.length / 8);
@@ -18,7 +18,6 @@ export default function MealList({ meals }: { meals: [] }) {
 	if (!meals) {
 		return <p className='mt-10 text-xl text-center'>no meals found</p>;
 	}
-
 	return (
 		<>
 			<ul className='mx-auto max-w-md p-12 sm:max-w-2xl sm:py-2 md:max-w-4xl lg:max-w-7xl grid px-3 grid-cols-1 gap-8 pb-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>

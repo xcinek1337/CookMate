@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default async function Home() {
 	const date = new Date().getDay();
 	const response = await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${date + 52780}`);
-	const { meals } = await response.json();
+	const { meals: meal } = await response.json();
 	return (
 		<>
 			<main>
@@ -29,7 +29,7 @@ export default async function Home() {
 			</main>
 			<section className='max-w-md mx-auto  px-4 sm:max-w-2xl sm:py-2 md:max-w-4xl lg:max-w-7xl '>
 				<h2 className='text-3xl text-center font-Roboto font-semibold text-gray-800 my-8'> Our daily suggestions</h2>
-				<MealItem meals={meals} />
+				<MealItem meal={meal} />
 			</section>
 		</>
 	);
