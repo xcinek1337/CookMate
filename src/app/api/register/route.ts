@@ -15,10 +15,8 @@ export async function POST(request: Request) {
 				password: hashedPassword,
 			},
 		});
-		const response = NextResponse.json({ message: 'Succesfully registered' }, { status: 200 });
-		return response;
+		return NextResponse.json({ message: 'Succesfully registered' }, { status: 200 });
 	} catch (error) {
-		console.log(error);
-		return new Response('Internal Server Error', { status: 500 });
+		return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
 	}
 }

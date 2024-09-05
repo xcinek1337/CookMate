@@ -38,7 +38,12 @@ export default function RegisterPage() {
 				body: JSON.stringify({ name, password }),
 			});
 
-			toast.success('Succesfully registered');
+			const data = await response.json()
+			if (response.ok) {
+				toast.success(data.message);
+			} else {
+				toast.error(data.message);
+			}
 			form.reset();
 		} catch (error) {
 			console.log(error);
